@@ -77,7 +77,14 @@ Flink核心概念
 ## 3.Event-time and processing-time
 ## 4.Watermark
 ## 5.Late Data Handling
+## 6.Exactly-once:与at-least once对比，确保有且仅处理一次
 
 
 
 Data source -> tramsformation -> Data sink
+
+### Flink与Spark的区别
+Flink以固定的缓存块为单位进行网络数据传输，用户可以通过缓存块超时值指定缓存块的传输时机，如果缓存块的超时值为0，则Flink的数据传输方式类似于流处理系统的标准方式，即来一个数据就处理一个数据。如果缓存块的超时值设置为无限大，则类似于Spark的批处理方式，此时，系统可以获得最高的吞吐量。同时，超时值也可以设置为0到无限大之间的某一个常数，通过设置超时值，是的用户可以在低延迟与高吞吐量之间做trade-off。
+
+### Flink入门案例-WordCount
+
