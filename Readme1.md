@@ -37,3 +37,47 @@ Flink特性
   the local state to durable storage.
 
 ![image](https://github.com/Popeye13/flink/blob/master/local-state.png)
+
+Application
+---
+##Building Blocks for Streaming Applications
+
+### Streams
+1. Bounded and unbounded streams
+2. Real-time and recorded streams
+
+### States
+1. **Multiple State Primitives**
+2. **Pluggable State Backends**: different state backends that store state in memory or in RocksDB, an efficient embedded on-disk data store. Custom state backends can be plugged in as well.
+3. **Exactly-once state consistency**: Flink’s checkpointing and recovery algorithms guarantee the consistency of application state in case of a failure. Hence, failures are transparently handled and do not affect the correctness of an application.
+4. **Very Large State**: Flink is able to maintain application state of several terabytes in size due to its **asynchronous and incremental checkpoint algorithm**.
+5. **Scalable Applications**
+
+### Times
+1. **Event-time Mode**: Compute results based on timestamps of the events. Thereby, event-time processing allows for accurate and consistent results regardless whether recorded or real-time events are processed.
+2. **Watermark Support**: Flink employs watermarks to reason about time in event-time applications. Watermarks are also a flexible mechanism to trade-off the latency and completeness of results.
+3. **Late Data Handling**: When processing streams in event-time mode with watermarks, it can happen that a computation has been completed before all associated events have arrived. Such events are called late events. Flink features multiple options to handle late events, such as rerouting them via side outputs and updating previously completed results.
+4. **Processing-time Mode**: In addition to its event-time mode, Flink also supports processing-time semantics which performs computations as triggered by the wall-clock time of the processing machine. The processing-time mode can be suitable for certain applications with strict low-latency requirements that can tolerate approximate results.
+
+## Layered APIs
+Flink provides three layered APIs. Each API offers a different trade-off between conciseness and expressiveness and targets different use cases.
+![image](https://github.com/Popeye13/flink/blob/master/api-stack.png)
+
+### The ProcessFunctions
+
+### The DataStream API
+
+### SQL & Table API
+
+Flink核心概念
+---
+
+## 1.Stateful
+## 2.Asynchronous and incremental checkpoint algorithm
+## 3.Event-time and processing-time
+## 4.Watermark
+## 5.Late Data Handling
+
+
+
+Data source -> tramsformation -> Data sink
